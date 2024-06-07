@@ -62,9 +62,13 @@ namespace match_src
                 if (numberOfDecks > 1)
                 {
                     Console.WriteLine("Type 3 for Suit AND Value matching (ex: only 3 of hearts and 3 of hearts match)");
+                    Console.WriteLine("Please enter 1, 2 or 3");
+                }
+                else
+                {
+                    Console.WriteLine("Please enter 1 or 2");
                 }
 
-                Console.WriteLine("Please enter 1, 2 or 3");
                 try
                 {
                     input = Convert.ToInt32(Console.ReadLine());

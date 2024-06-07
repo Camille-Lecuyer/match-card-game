@@ -11,6 +11,9 @@ namespace match
             Console.WriteLine("MATCH GAME!");
             InputManagement inputManagement = new InputManagement();
             inputManagement.AskInput();
+
+            Game game = new Game(inputManagement.numberOfDecks, inputManagement.selectedMatchCondition);
+            game.StartGame();
         }
     }
 }
