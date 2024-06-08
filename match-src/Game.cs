@@ -1,14 +1,14 @@
 ﻿namespace match_src
 {
-    internal class Game
+    public class Game
     {
-        int NumberOfDecks;
-        int MatchCondition;
-        Deck Deck;
-        Card? TopOfPile;
-        List<Card> PileOfCards;
-        Player PlayerA;
-        Player PlayerB;
+        public int NumberOfDecks;
+        public int MatchCondition;
+        public Deck Deck;
+        public Card? TopOfPile;
+        public List<Card> PileOfCards;
+        public Player PlayerA;
+        public Player PlayerB;
 
         public Game(int numberOfDecks, int matchCondition)
         {
@@ -22,17 +22,17 @@
 
         public void StartGame()
         {
-            DrawCards();
+            DrawCard();
             Player winningPlayer = checkWinner();
             if (winningPlayer != null) { 
                 Console.WriteLine($"Player {winningPlayer.Name} has won! They had {winningPlayer.NumberOfCards} cards in their pile"); 
             }
             else {
-                Console.WriteLine($"It's a draw! Both players have {PlayerA.NumberOfCards} cards");                
+                Console.WriteLine($"It's a draw! Both players have {PlayerA.NumberOfCards} card(s)");                
             }
         }
 
-        private void DrawCards()
+        public void DrawCard()
         {
             while (!Deck.IsEmpty())
             {
@@ -52,14 +52,14 @@
             }
         }
 
-        private bool CardMatch(Card card)
+        public bool CardMatch(Card card)
         {
             if (MatchCondition == 1) return TopOfPile.CardSuit == card.CardSuit;
             else if (MatchCondition == 2) return TopOfPile.CardValue == card.CardValue;
             else return TopOfPile.CardValue == card.CardValue && TopOfPile.CardSuit == card.CardSuit;
         }    
 
-        private Player PlayersCallMatch()
+        public Player PlayersCallMatch()
         {
             int playerACall = PlayerA.CallMatch();
             int playerBCall = PlayerB.CallMatch();
@@ -69,7 +69,7 @@
             return playerACall > playerBCall ? PlayerA : PlayerB;
         }
 
-        private void winsRound(Player winningPlayer, Card drawnCard)
+        public void winsRound(Player winningPlayer, Card drawnCard)
         {
             TopOfPile = null;
             PileOfCards.Add(drawnCard);
@@ -78,7 +78,7 @@
             PileOfCards = new List<Card>();
         }
 
-        private Player checkWinner()
+        public Player? checkWinner()
         {
             if(PlayerA.NumberOfCards > PlayerB.NumberOfCards)
             {

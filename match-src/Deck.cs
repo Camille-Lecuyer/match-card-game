@@ -1,8 +1,8 @@
 ﻿namespace match_src
 {
-    internal class Deck
+    public class Deck
     {
-        private List<Card> Cards;
+        public List<Card> Cards;
         private Random Random = new Random();
 
         public Deck(int numberOfDecks)

@@ -1,10 +1,10 @@
 ﻿namespace match_src
 {
-    internal class Player
+    public class Player
     {
         public int NumberOfCards { get; set; }
         private Random Random;
-        public string Name { get; set; }
+        public string Name { get; }
 
         public Player(string name) 
         {

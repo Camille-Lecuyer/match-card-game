@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace match_src
+﻿namespace match_src
 {
-    internal class Card
+    public class Card
     {
         public enum Suit 
         {
@@ -33,8 +27,8 @@ namespace match_src
             King = 13
         }
 
-        public Value CardValue { get; set; }
-        public Suit CardSuit { get; set; }
+        public Value CardValue { get; }
+        public Suit CardSuit { get; }
 
         public Card(Value value, Suit suit)
         {
