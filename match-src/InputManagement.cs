@@ -37,6 +37,10 @@ namespace match_src
                 try
                 {
                     numberOfDecks = Convert.ToInt32(Console.ReadLine());
+                    if (numberOfDecks == 0 || numberOfDecks > 100) {
+                        Console.WriteLine("Please choose a number between 1 and 100");
+                        continue;
+                    }
                 }
                 catch (Exception e)
                 {
@@ -53,7 +57,9 @@ namespace match_src
         {
             int input = 0;
             string confirmMatchCondition = "";
-            while (confirmMatchCondition != "yes" && input != 1 && input != 2 && input != 3)
+            string availableSelection = numberOfDecks > 1 ? "1, 2 or 3" : "1 or 2";
+            
+            while (confirmMatchCondition != "yes")
             {
                 Console.WriteLine("Which match condition would you like?");
                 Console.WriteLine("Type 1 for Suit matching (ex: 3 of hearts and 5 of hearts match)");
@@ -62,16 +68,19 @@ namespace match_src
                 if (numberOfDecks > 1)
                 {
                     Console.WriteLine("Type 3 for Suit AND Value matching (ex: only 3 of hearts and 3 of hearts match)");
-                    Console.WriteLine("Please enter 1, 2 or 3");
+
                 }
-                else
-                {
-                    Console.WriteLine("Please enter 1 or 2");
-                }
+                Console.WriteLine($"Please enter {availableSelection}");
+
 
                 try
                 {
                     input = Convert.ToInt32(Console.ReadLine());
+                    if(input != 1 && input != 2 && input != 3)
+                    {
+                        Console.WriteLine($"Please enter {availableSelection}");
+                        continue;
+                    }
                 }
                 catch (Exception) {
                     Console.WriteLine("Please enter a number");                  
@@ -81,9 +90,17 @@ namespace match_src
                 Console.WriteLine($"The game will use the {matchConditionPair[input]} match condition, is this correct?");
                 confirmMatchCondition = Console.ReadLine().ToLower();
             }
+            Console.WriteLine(confirmMatchCondition);
             return input;
         }
 
+        public bool PlayAgain()
+        {
+            Console.WriteLine("****************************************");
+            Console.WriteLine("Want to play again? type 'yes' to do so");
+            string playAgainChoice = Console.ReadLine().ToLower();
+            return playAgainChoice.ToLower() == "yes";
+        }
 
     }
 }

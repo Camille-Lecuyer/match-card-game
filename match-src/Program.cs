@@ -14,6 +14,12 @@ namespace match
 
             Game game = new Game(inputManagement.numberOfDecks, inputManagement.selectedMatchCondition);
             game.StartGame();
+            while (inputManagement.PlayAgain()) 
+            {
+                inputManagement.AskInput();
+                game = new Game(inputManagement.numberOfDecks, inputManagement.selectedMatchCondition);
+                game.StartGame();
+            }
         }
     }
 }

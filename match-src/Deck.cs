@@ -12,7 +12,7 @@
             Shuffle();
         }
 
-        public void Shuffle()
+        private void Shuffle()
         {
             int numberOfCards = Cards.Count;
             //Fisher-Yates shuffle algorithm
