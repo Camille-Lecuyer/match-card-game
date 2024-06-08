@@ -37,7 +37,7 @@ namespace match_src
                 try
                 {
                     numberOfDecks = Convert.ToInt32(Console.ReadLine());
-                    if (numberOfDecks == 0 || numberOfDecks > 100) {
+                    if (numberOfDecks < 1 || numberOfDecks > 100) {
                         Console.WriteLine("Please choose a number between 1 and 100");
                         continue;
                     }
