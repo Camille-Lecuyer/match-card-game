@@ -15,6 +15,7 @@
             NumberOfDecks = numberOfDecks;
             MatchCondition = matchCondition;
             Deck = new Deck(numberOfDecks);
+            TopOfPile = null;
             PileOfCards = new List<Card>();
             PlayerA = new Player("A");
             PlayerB = new Player("B");
@@ -23,7 +24,7 @@
         public void StartGame()
         {
             DrawCard();
-            Player winningPlayer = checkWinner();
+            Player? winningPlayer = checkWinner();
             if (winningPlayer != null) { 
                 Console.WriteLine($"Player {winningPlayer.Name} has won! They had {winningPlayer.NumberOfCards} cards in their pile"); 
             }
@@ -54,9 +55,13 @@
 
         public bool CardMatch(Card card)
         {
-            if (MatchCondition == 1) return TopOfPile.CardSuit == card.CardSuit;
-            else if (MatchCondition == 2) return TopOfPile.CardValue == card.CardValue;
-            else return TopOfPile.CardValue == card.CardValue && TopOfPile.CardSuit == card.CardSuit;
+            if (TopOfPile != null)
+            {
+                if (MatchCondition == 1) return TopOfPile.CardSuit == card.CardSuit;
+                else if (MatchCondition == 2) return TopOfPile.CardValue == card.CardValue;
+                else return TopOfPile.CardValue == card.CardValue && TopOfPile.CardSuit == card.CardSuit;
+            }
+            return false;
         }    
 
         public Player PlayersCallMatch()

@@ -4,12 +4,11 @@ namespace match_test
 {
     public class DeckTest
     {
-        Deck deck;
 
         [Test]
         public void Initialise_1PackDeck()
         {
-            deck = new Deck(1);
+            Deck deck = new Deck(1);
             Assert.IsNotNull(deck);
             Assert.IsTrue(deck.Cards.Count == 52);
         }
@@ -17,7 +16,7 @@ namespace match_test
         [Test]
         public void Initialise_5PacksDeck()
         {
-            deck = new Deck(5);
+            Deck deck = new Deck(5);
             Assert.IsNotNull(deck);
             Assert.IsTrue(deck.Cards.Count == 260);
         }
@@ -25,7 +24,7 @@ namespace match_test
         [Test]
         public void Draw_test()
         {
-            deck = new Deck(1);
+            Deck deck = new Deck(1);
             Assert.IsNotNull(deck);
             var cardDrawn = deck.Draw();
             Assert.IsNotNull(cardDrawn);
@@ -35,7 +34,7 @@ namespace match_test
         [Test]
         public void isEmpty_test()
         {
-            deck = new Deck(1);
+            Deck deck = new Deck(1);
             Assert.IsNotNull(deck);
             for(int i = 0; i < 52; i++)
             {

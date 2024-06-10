@@ -3,12 +3,11 @@ namespace match_test
 {
     public class GameTest
     {
-        Game game;
 
         [Test]
         public void Initialise_Game()
         {
-            game = new Game(1, 1);
+            Game game = new Game(1, 1);
             Assert.IsNotNull(game);
 
             Assert.That(game.Deck.Cards.Count, Is.EqualTo(52));
@@ -21,7 +20,7 @@ namespace match_test
         [Test]
         public void DrawCard_test()
         {
-            game = new Game(1, 1);
+            Game game = new Game(1, 1);
             Assert.IsNotNull(game);
 
             Assert.That(game.Deck.Cards.Count, Is.EqualTo(52));
@@ -34,7 +33,7 @@ namespace match_test
         [Test]
         public void CardMatch_BySuit_test()
         {
-            game = new Game(1, 1);
+            Game game = new Game(1, 1);
             Card matchingCard = new Card(Card.Value.Ten, Card.Suit.Heart);
             Card notMatchingCard = new Card(Card.Value.Ace, Card.Suit.Diamond);
             game.TopOfPile = new Card(Card.Value.Ace, Card.Suit.Heart);
@@ -45,7 +44,7 @@ namespace match_test
         [Test]
         public void CardMatch_ByValue_test()
         {
-            game = new Game(1, 2);
+            Game game = new Game(1, 2);
             Card matchingCard = new Card(Card.Value.Ace, Card.Suit.Diamond);
             Card notMatchingCard = new Card(Card.Value.Ten, Card.Suit.Heart);
             game.TopOfPile = new Card(Card.Value.Ace, Card.Suit.Heart);
@@ -56,7 +55,7 @@ namespace match_test
         [Test]
         public void CardMatch_ByValueAndSuit_test()
         {
-            game = new Game(1, 3);
+            Game game = new Game(1, 3);
             Card matchingCard = new Card(Card.Value.Ace, Card.Suit.Diamond);
             Card notMatchingCard1 = new Card(Card.Value.Ten, Card.Suit.Diamond);
             Card notMatchingCard2 = new Card(Card.Value.Ace, Card.Suit.Heart);
@@ -69,7 +68,7 @@ namespace match_test
         [Test]
         public void PlayerCallMatch_test()
         {
-            game = new Game(1, 1);
+            Game game = new Game(1, 1);
             Player playerA = new Player("Alice");
             Player playerB = new Player("Bob");
             Player player = game.PlayersCallMatch();
@@ -80,7 +79,7 @@ namespace match_test
         public void WinsRound_test()
         {
             //Arrange
-            game = new Game(1, 1);
+            Game game = new Game(1, 1);
             Player player = new Player("Alice");
             List<Card> cards = new List<Card>();
             cards.Add(new Card(Card.Value.Jack, Card.Suit.Diamond));
@@ -105,7 +104,7 @@ namespace match_test
         [Test]
         public void checkWinner_Win_Test()
         {
-            game = new Game(1, 1);
+            Game game = new Game(1, 1);
             Player playerA = new Player("Alice");
             playerA.GainCards(60);
             Player playerB = new Player("Bob");
@@ -118,7 +117,7 @@ namespace match_test
         [Test]
         public void checkWinner_Draw_Test()
         {
-            game = new Game(1, 1);
+            Game game = new Game(1, 1);
             Player playerA = new Player("Alice");
             playerA.GainCards(60);
             Player playerB = new Player("Bob");

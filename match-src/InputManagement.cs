@@ -25,7 +25,7 @@ namespace match_src
             numberOfDecks = askDeckNumber();
             selectedMatchCondition = matchCondition();
             Console.WriteLine("The game will now start!");
-            Console.WriteLine($"It will contain {numberOfDecks} and use the {matchConditionPair[selectedMatchCondition]} match condition!");
+            Console.WriteLine($"It will contain {numberOfDecks} deck(s) and use the {matchConditionPair[selectedMatchCondition]} match condition!");
         }
 
         int askDeckNumber()
@@ -42,13 +42,13 @@ namespace match_src
                         continue;
                     }
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     Console.WriteLine("Please enter a number");
                 }
 
                 Console.WriteLine($"The game will contain {numberOfDecks} decks of cards, is this correct?");
-                confirmDeckNumber = Console.ReadLine().ToLower();
+                confirmDeckNumber = Console.ReadLine()?.ToLower() ?? string.Empty;
             }
             return numberOfDecks;
         }
@@ -76,19 +76,19 @@ namespace match_src
                 try
                 {
                     input = Convert.ToInt32(Console.ReadLine());
-                    if(input != 1 && input != 2 && input != 3)
+                    if((numberOfDecks > 1 && input != 1 && input != 2 && input != 3) || (numberOfDecks == 1 && input != 1 && input != 2))
                     {
                         Console.WriteLine($"Please enter {availableSelection}");
                         continue;
                     }
+
                 }
                 catch (Exception) {
-                    Console.WriteLine("Please enter a number");                  
-
+                    Console.WriteLine("Please enter a number");              
                 }
 
                 Console.WriteLine($"The game will use the {matchConditionPair[input]} match condition, is this correct?");
-                confirmMatchCondition = Console.ReadLine().ToLower();
+                confirmMatchCondition = Console.ReadLine()?.ToLower() ?? string.Empty;
             }
             Console.WriteLine(confirmMatchCondition);
             return input;
@@ -98,7 +98,7 @@ namespace match_src
         {
             Console.WriteLine("****************************************");
             Console.WriteLine("Want to play again? type 'yes' to do so");
-            string playAgainChoice = Console.ReadLine().ToLower();
+            string playAgainChoice = Console.ReadLine()?.ToLower() ?? string.Empty;
             return playAgainChoice.ToLower() == "yes";
         }
 
